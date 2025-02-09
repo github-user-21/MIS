@@ -1,0 +1,77 @@
+<div class="container mt-4">
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="alert alert-success text-center">
+    {{ successMessage }}
+  </div>
+
+  <!-- Course Details -->
+  <div *ngIf="!isLoading && !errorMessage" class="card shadow-lg rounded">
+    <div class="card-body">
+      <h2 class="text-center text-primary">{{ course.title }}</h2>
+      <p class="text-muted text-primary text-center">Course ID: {{ course.course_id }}</p>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h5 class="fw-bold">Department</h5>
+          <p>{{ course.dept_name }}</p>
+        </div>
+
+        <div class="col-md-6">
+          <h5 class="fw-bold">Credits</h5>
+          <p>{{ course.credits }}</p>
+        </div>
+      </div>
+
+      <!-- Section Details -->
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h5 class="fw-bold">Semester</h5>
+          <p>{{ section[0].semester || 'N/A' }}</p>
+        </div>
+        <div class="col-md-6">
+          <h5 class="fw-bold">Year</h5>
+          <p>{{ section[0].year || 'N/A' }}</p>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-6">
+          <h5 class="fw-bold">Section ID</h5>
+          <p>{{ section[0].sec_id || 'N/A' }}</p>
+        </div>
+        <div class="col-md-6">
+          <h5 class="fw-bold">Time Slot</h5>
+          <p>{{ section[0].time_slot_id || 'N/A' }}</p>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-6">
+          <h5 class="fw-bold">Building</h5>
+          <p>{{ section[0].building || 'N/A' }}</p>
+        </div>
+        <div class="col-md-6">
+          <h5 class="fw-bold">Room Number</h5>
+          <p>{{ section[0].room_number || 'N/A' }}</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button class="btn btn-success" (click)="enrollCourse()">Enroll</button>
+        <a routerLink="/dashboard/" class="btn btn-primary ms-2">Back to My Courses</a>
+      </div>
+    </div>
+  </div>
+</div>

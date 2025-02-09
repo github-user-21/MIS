@@ -1,0 +1,53 @@
+<div class="container mt-4">
+    <h2 class="fw-bold text-primary text-center">Create a New Course</h2>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+        {{ errorMessage }}
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success text-center">
+        {{ successMessage }}
+    </div>
+
+    <!-- Course Creation Form -->
+    <div class="card shadow-lg p-4">
+        <form (ngSubmit)="createCourse()">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Course Code</label>
+                <input type="text" class="form-control" [(ngModel)]="course.courseId" name="courseId" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Course Name</label>
+                <input type="text" class="form-control" [(ngModel)]="course.title" name="title" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Department Name</label>
+                <input type="text" class="form-control" [(ngModel)]="course.deptName" name="deptName" required>
+            </div>
+
+            <!-- <div class="mb-3">
+                <label class="form-label fw-bold">Instructor</label>
+                <select class="form-control" [(ngModel)]="course.instructor_id" name="instructor_id" required>
+                    <option value="" disabled>Select Instructor</option>
+                    <option *ngFor="let instructor of instructors" [value]="instructor.user_id">
+                        {{ instructor.username }}
+                    </option>
+                </select>
+            </div> -->
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Credits</label>
+                <input type="number" class="form-control" [(ngModel)]="course.credits" name="credits" min="1" max="6"
+                    required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-30" [disabled]="isSubmitting">
+                {{ isSubmitting ? 'Creating...' : 'Create Course' }}
+            </button>
+        </form>
+    </div>
+</div>

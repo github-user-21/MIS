@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <h2 class="text-primary">Course Students</h2>
+    <div class="row mb-3">
+        <div class="col">
+            <input class="form-control" [(ngModel)]="courseId" placeholder="Course ID" />
+        </div>
+        <div class="col">
+            <input class="form-control" [(ngModel)]="secId" placeholder="Section ID" />
+        </div>
+        <div class="col">
+            <input class="form-control" [(ngModel)]="semester" placeholder="Semester" />
+        </div>
+        <div class="col">
+            <input class="form-control" [(ngModel)]="year" placeholder="Year" />
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" (click)="fetchStudents()">Fetch Students</button>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered" *ngIf="students.length > 0">
+        <thead class="table-dark">
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Grade</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students">
+              <td>{{ student.ID }}</td>
+              <td>{{ student.name }}</td>
+              <td>
+                <input [(ngModel)]="student.grade" class="form-control" placeholder="Enter Grade" />
+              </td>
+              <td>
+                <button class="btn btn-success btn-sm" (click)="submitGrade(student)">
+                  Submit Grade
+                </button>
+                <span *ngIf="student.successMessage" class="text-success">{{ student.successMessage }}</span>
+                <span *ngIf="student.errorMessage" class="text-danger">{{ student.errorMessage }}</span>
+              </td>
+            </tr>
+          </tbody>          
+    </table>
+</div>

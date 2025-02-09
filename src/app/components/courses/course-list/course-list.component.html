@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    <h2 class="fw-bold text-primary text-center">Available Courses</h2>
+  
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading" class="text-center mt-4">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="!isLoading && !errorMessage" class="table-responsive mt-4">
+      <table class="table table-bordered table-hover">
+        <thead class="bg-primary text-white">
+          <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Department</th>
+            <th>Credits</th>
+            <!-- <th>Total Students</th> -->
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of filteredCourses">
+            <td>{{ course.course_id }}</td>
+            <td>{{ course.title }}</td>
+            <td>{{ course.dept_name }}</td>
+            <td>{{ course.credits }}</td>
+            <!-- <td>{{ course.instructor }}</td> -->
+            <td>
+              <button class="btn btn-info btn-sm" (click)="viewCourseDetails(course)">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
