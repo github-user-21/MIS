@@ -19,7 +19,6 @@ app.use("/student",studentRoutes);
 app.use("/instructor",instructorRoutes);
 app.use("/course",courseRoutes);
 app.use("/users",userRoutes);
-// app.use("/enrollment",enrollmentRoutes)
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

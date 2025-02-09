@@ -38,8 +38,9 @@ exports.viewAvailableCourses = async (req, res) => {
 
 exports.enrollCourses = async (req, res) => {
     try {
-        const userId = req.user.id;
-        const {courseId, sectionId, } = req.body;
+        const { id, courseId, sectionId } = req.body;  // Ensure 'id' is fetched from request body
+        const userId = id; // Assign userId correctly
+
 
         console.log(userId, courseId, sectionId);
 
@@ -113,7 +114,7 @@ exports.viewEnrolledCourses = async (req, res) => {
         res.status(200).json(enrolledCourses);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: err});
+        res.status(500).json({ error: err });
     }
 };
 
